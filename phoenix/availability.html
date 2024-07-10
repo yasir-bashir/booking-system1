@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check availability</title>
+    <link rel="stylesheet" href="availability.css">
+    <script src="phoenix.js"></script>
+</head>
+<body>
+    <section class="features">
+        <div class="feature-item">
+          <i class="fas fa-calendar-alt"></i>
+          <h3>Check Availability</h3>
+          <p>View real-time availability for all our sports venues.</p>
+          <button id="check-availability-button">Check Availability</button>
+          <div id="availability-results"></div>
+        </div> 
+        <script>
+            checkAvailabilityButton.addEventListener('click', () => {
+      // Mock data for available venues
+      const availableVenues = [
+        'Arena Stadium - Available on June 25, 2024',
+        'Waamo stadium - Available on June 27, 2024',
+        'Koonis Stadium- Available on July 1, 2024',
+        'Yaasir Stadium- Available on July 15, 2024',
+      ];
+  
+      // Clear previous results
+      availabilityResults.innerHTML = '';
+  
+      // Display available venues
+      const ul = document.createElement('ul');
+      availableVenues.forEach(venue => {
+        const li = document.createElement('li');
+        li.textContent = venue;
+        ul.appendChild(li);
+      });
+      availabilityResults.appendChild(ul);
+    });
+        </script>
+</body>
+</html>

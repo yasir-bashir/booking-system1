@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stadium Booking System</title>
+  <link rel="stylesheet" href="protected.css">
+  <script src="phoenix.js" defer></script>
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+  <style>
+    #map {
+      height: 500px; /* Set the height of the map */
+    }
+
+    .booking-form {
+      display: none; /* Hide the booking form initially */
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">
+        <a href="#">STADIUM BOOKING SYSTEM</a>
+      </div>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="veneues.html">Venues</a></li>
+        <li><a href="availability.html">Availability</a></li>
+        <li><a href="booknow.html">Book Now</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h1>Reserve Your Sports Venue</h1>
+        <p>Find and book the perfect stadium or sports facility for your event.</p>
+        <a href="booknow.html" class="cta">Book Now</a>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="feature-item">
+        <i class="fas fa-calendar-alt"></i>
+        <h3>Check Availability</h3>
+        <p>View real-time availability for all our sports venues.</p>
+        <button id="check-availability-button">Check Availability</button>
+        <div id="availability-results"></div>
+      </div>
+      <div class="feature-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <h3>Explore Venues</h3>
+        <p>Browse our selection of top-notch sports facilities.</p>
+        <ul class="venue-list">
+          <li>
+            <img src="Images/AdobeStock_351578633_Preview.jpeg" alt="Arena stadium">
+            <div class="venue-info">
+              <h4>Arena stadium</h4>
+              <p>Modern stadium with top-notch facilities located in central nyali, mogadishu ndogo state </p>
+            </div>
+          </li>
+          <li>
+            <img src="Images/AdobeStock_64182490_Preview.jpeg" alt="Koonis stadium">
+            <div class="venue-info">
+              <h4>Konis stadium</h4>
+              <p>Comprehensive sports complex for all activities located in bondeni near masjid al-noor</p>
+            </div>
+          </li>
+          <li>
+            <img src="Images/AdobeStock_717580427_Preview.jpeg" alt="Waamo stadium">
+            <div class="venue-info">
+              <h4>Waamo stadium</h4>
+              <p>Beachside courts for volleyball and more located just 7 minute walk to the beach in Kizingo</p>
+            </div>
+          </li>
+          <li>
+            <img src="Images/images.jpeg" alt="Yaasir stadium">
+            <div class="venue-info">
+              <h4>Yaasir stadium</h4>
+              <p>Beachside courts for volleyball and more located just 7 minute walk to the beach in Kizingo</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="feature-item">
+        <i class="fas fa-credit-card"></i>
+        <h3>Easy Booking</h3>
+        <p>Secure your booking with our simple online platform.</p>
+        <button id="book-now-button">Book Now</button>
+      </div>
+    </section>
+    
+    <section class="venue-gallery">
+      <h2>Our Venues</h2>
+      <div class="gallery">
+        <img src="Images/AdobeStock_351578633_Preview.jpeg" alt="arena stadium">
+        <img src="Images/AdobeStock_64182490_Preview.jpeg" alt="konis stadium">
+        <img src="Images/AdobeStock_717580427_Preview.jpeg" alt="Waamo stadium">
+        <img src="Images/images.jpeg" alt="Waamo stadium">
+      </div>
+    </section>
+
+    <section class="interactive-map">
+      <h2>Find Our Venues</h2>
+      <div id="map"></div>
+    </section>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // Initialize the map and set its view to Nyali, Mombasa
+        var map = L.map('map').setView([-4.0378, 39.6824], 13);
+  
+        // Add a tile layer to the map
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+  
+        // Add a marker to the map
+        L.marker([-4.0378, 39.6824]).addTo(map)
+          .bindPopup('Nyali, Mombasa.<br>.')
+          .openPopup();
+      });
+    </script>
+
+    <section class="faqs">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-item">
+        <h3>How do I book a venue?</h3>
+        <p>You can book a venue by selecting your preferred venue and date, and filling in your details on our booking form.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What is the cancellation policy?</h3>
+        <p>You can cancel your booking up to 48 hours before the event for a full refund.</p>
+      </div>
+    </section>
+
+    <section class="newsletter-signup">
+      <h2>Stay Updated</h2>
+      <p>Subscribe to our newsletter for the latest updates on venues and special offers.</p>
+      <form id="newsletter-form">
+        <input type="email" id="email" placeholder="Enter your email" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </section>
+
+    <section class="booking-form" id="booking-form-section">
+      <h2>Book Your Venue</h2>
+      <form id="booking-form">
+        <label for="venue">Choose Venue:</label>
+        <select id="venue" required>
+          <option value="Arena stadium">Arena stadium</option>
+          <option value="koonis stadium">konis stadium</option>
+          <option value="Waamo stadium">waamo stadium</option>
+          <option value="Yaasir stadium">Yaasir Stadium</option>
+        </select>
+
+        <label for="date">Choose Date:</label>
+        <input type="date" id="date" required>
+
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" required>
+
+        <button type="submit">Book Now</button>
+      </form>
+      <div id="booking-confirmation"></div>
+    </section>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // Simulate checking availability
+        document.getElementById('check-availability-button').addEventListener('click', function () {
+          document.getElementById('availability-results').innerText = 'All venues are available.';
+        });
+  
+        // Show booking form when "Book Now" button is clicked
+        document.getElementById('book-now-button').addEventListener('click', function () {
+          var bookingFormSection = document.getElementById('booking-form-section');
+          bookingFormSection.style.display = 'block';
+          bookingFormSection.scrollIntoView({ behavior: 'smooth' });
+        });
+  
+        // Handle booking form submission
+        document.getElementById('booking-form').addEventListener('submit', function (event) {
+          event.preventDefault();
+          var confirmation = document.getElementById('booking-confirmation');
+          confirmation.innerText = 'Booking confirmed!';
+        });
+      });
+    </script>
+
+    <section class="testimonials">
+      <h2>What Our Customers Say</h2>
+      <div class="testimonial-item">
+        <img src="Images/Screenshot_21-6-2024_105147_.jpeg" alt="Customer 1">
+        <blockquote>
+          <p>"The booking process was so easy, and the venue was perfect for our event. Highly recommended!"</p>
+          <cite>- Qaranka, Event Organizer</cite>
+        </blockquote>
+      </div>
+      <div class="testimonial-item">
+        <img src="Images/Screenshot_21-6-2024_105147_.jpeg" alt="Customer 2">
+        <blockquote>
+          <p>"This platform made finding and booking the right sports venue a breeze. Saved us so much time!"</p>
+          <cite>- Yasir, Sports Team Manager</cite>
+        </blockquote>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Stadium Booking. All rights reserved.</p>
+  </footer>
+
+ 
+</body>
+</html>

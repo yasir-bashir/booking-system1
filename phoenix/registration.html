@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration - Stadium Booking System</title>
+    <link rel="stylesheet" href="registration.css">
+    <script src="phoenix.css"></script>
+</head>
+<body>
+    <div class="registration-container">
+        <form id="registration-form" class="registration-form" onsubmit="return register()">
+            <h2>Registration</h2>
+            <div class="form-group">
+                <label for="fullname">Full Name</label>
+                <input type="text" id="fullname" name="fullname" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" minlength="8" required>
+                <small>Password must be at least 8 characters long.</small>
+            </div>
+            <button type="submit">Register</button>
+            <div id="registration-error" class="error-message"></div>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+  <link rel="stylesheet" href="contact.css">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script src="phoenix.js"></script>
+</head>
+<body>
+  <section class="contact-section">
+    <div class="contact-container">
+      <h2>Contact Us</h2>
+      <p> <i>If you have any questions or need further information, feel free to contact us using the form below.</i></p>
+      <div class="contact-info">
+        <div class="contact-item">
+          <i class="fas fa-phone-alt"></i>
+          <h4>Phone</h4>
+          <p>+254723430405</p>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <h4>Email</h4>
+          <p>yasirmohamedbashir@gmail.com</p>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <h4>Address</h4>
+          <p>123 Booking St., Suite 100, Booking City</p>
+        </div>
+      </div>
+      <form id="contact-form">
+        <div class="form-group">
+          <input type="text" id="name" name="name" required>
+          <label for="name">Name</label>
+        </div>
+        <div class="form-group">
+          <input type="email" id="email" name="email" required>
+          <label for="email">Email</label>
+        </div>
+        <div class="form-group">
+          <textarea id="message" name="message" rows="5" required></textarea>
+          <label for="message">Message</label>
+        </div>
+        <button type="submit">Send Message</button>
+      </form>
+      <div id="form-messages"></div>
+    </div>
+  </section>
+</body>
+</html>

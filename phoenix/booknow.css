@@ -1,0 +1,73 @@
+/* Resetting default margins and padding */
+body, h1, h2, h3, h4, h5, h6, p, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+/* Centering the form and confirmation message */
+.booking-form {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.booking-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.booking-form form {
+    display: grid;
+    gap: 15px;
+}
+
+.booking-form label {
+    font-weight: bold;
+    color: #555;
+}
+
+.booking-form select,
+.booking-form input[type="date"],
+.booking-form input[type="text"],
+.booking-form button {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.booking-form button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.booking-form button:hover {
+    background-color: #2980b9;
+}
+
+.booking-form input[type="date"] {
+    appearance: none;
+}
+
+.booking-form #booking-confirmation {
+    margin-top: 20px;
+    text-align: center;
+    padding: 10px;
+    background-color: #dff0d8;
+    border: 1px solid #c3e6cb;
+    border-radius: 5px;
+    display: none; /* Hidden by default */
+}
+
+.booking-form #booking-confirmation.show {
+    display: block;
+}
